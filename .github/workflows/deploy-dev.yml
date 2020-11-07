@@ -40,7 +40,7 @@ jobs:
     - name: Build app
       run: yarn && yarn build
     # Build the Docker image
-    - name: Build
+    - name: Docker
       run: |-
         docker build \
           --tag "gcr.io/$PROJECT_ID/$IMAGE:$GITHUB_SHA" \
