@@ -7,9 +7,10 @@ on:
 
 env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
-  GKE_CLUSTER: cluster-1    # TODO: update to cluster name
-  GKE_ZONE: us-central1-c   # TODO: update to cluster zone
-  DEPLOYMENT_NAME: gke-test # TODO: update to deployment name
+  GKE_SA_KEY: ${{ secrets.GKE_SA_KEY }}   # TODO: update to GKE KEY
+  GKE_CLUSTER: mybuilder-dev              # TODO: update to cluster name
+  GKE_ZONE: us-east1-b                    # TODO: update to cluster zone
+  DEPLOYMENT_NAME: mybuilder-dev          # TODO: update to deployment name
   IMAGE: static-site
 
 jobs:
@@ -25,8 +26,8 @@ jobs:
     - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
       with:
         version: '290.0.1'
-        service_account_key: ${{ secrets.GKE_SA_KEY }}
-        project_id: ${{ secrets.GKE_PROJECT }}
+        service_account_key: $GKE_SA_KEY
+        project_id: $PROJECT_ID
 
     # Configure Docker to use the gcloud command-line tool as a credential
     # helper for authentication
