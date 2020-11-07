@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {appName}-deployment-{branch}
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: {appName}-{branch}
+    spec:
+      containers:
+      - name: {appName}-{branch}
+        image: gcr.io/bentivi/{appName}-develop:{version}
+        resources:
+          limits:
+            cpu: 100m
+            memory: 128Mi
+          requests:
+            cpu: 50m
+            memory: 100Mi
+        imagePullPolicy: Always
+        ports:
+        - name: http
+          containerPort: 8080
