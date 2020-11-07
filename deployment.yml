@@ -1,25 +1,29 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {appName}-deployment-{branch}
+  name: gke-test
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: gke-test
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 5
   template:
     metadata:
       labels:
-        app: {appName}-{branch}
+        app: gke-test
     spec:
       containers:
-      - name: {appName}-{branch}
-        image: gcr.io/bentivi/{appName}-develop:{version}
+      - name: gke-test
+        image: gcr.io/PROJECT_ID/IMAGE:TAG
+        ports:
+        - containerPort: 5000
         resources:
+          requests:
+            cpu: 100m
           limits:
             cpu: 100m
-            memory: 128Mi
-          requests:
-            cpu: 50m
-            memory: 100Mi
-        imagePullPolicy: Always
-        ports:
-        - name: http
-          containerPort: 8080
