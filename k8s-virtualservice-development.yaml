@@ -11,6 +11,6 @@ spec:
   http:
   - route:
     - destination:
-        host: {appName}-{branch}-svc
+        host: k8s-bentivi-dev
         port:
           number: 80 
