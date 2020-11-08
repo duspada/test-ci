@@ -1,16 +1,13 @@
-FROM nginx
+FROM nginx:1.13.3-alpine
 
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+LABEL maintainer="Michael"
 
-WORKDIR /usr/share/nginx/html
-COPY ./build .
+RUN rm -rf /usr/share/nginx/html/*
 
-ARG GITHUB_SHA
-ARG GITHUB_REF
-ENV SHA=$GITHUB_SHA
-ENV REF=$GITHUB_REF
+COPY ./build /usr/share/nginx/html
+COPY default.conf /etc/nginx/conf.d/
 
-RUN sed -i 's,SHA,'"$GITHUB_SHA"',' index.html
-RUN sed -i 's,REF,'"$GITHUB_REF"',' index.html
+EXPOSE 8080
 
-CMD nginx -g 'daemon off;'
+## Application start arguments
+CMD ["nginx","-g","daemon off;"]
