@@ -7,7 +7,7 @@ RUN rm -rf /usr/share/nginx/html/*
 COPY ./build /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/
 
-EXPOSE 5000
+EXPOSE 8080
 
 ## Application start arguments
 CMD ["nginx","-g","daemon off;"]
