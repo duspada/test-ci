@@ -11,6 +11,6 @@ spec:
   http:
   - route:
     - destination:
-        host: Backoffice-development
+        host: backoffice-development
         port:
           number: 80 
