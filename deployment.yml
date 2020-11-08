@@ -1,4 +1,4 @@
-apiVersion: apps/v1
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: k8s-bentivi-dev
@@ -21,9 +21,13 @@ spec:
       - name: k8s-bentivi-dev
         image: gcr.io/PROJECT_ID/IMAGE:TAG
         ports:
+        - name: http
         - containerPort: 5000
+        imagePullPolicy: Always
         resources:
           requests:
             cpu: 100m
+            memory: 100Mi
           limits:
+            memory: 128Mi
             cpu: 100m
