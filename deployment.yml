@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: k8s-bentivi-dev
-        image: gcr.io/PROJECT_ID/IMAGE:TAG
+        image: gcr.io/bentivi/IMAGE:TAG
         ports:
         - containerPort: 5000
         resources:
