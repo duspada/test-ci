@@ -1,6 +1,6 @@
 FROM nginx:1.13.3-alpine
 
-LABEL maintainer="Michael"
+LABEL maintainer="DuSpada"
 
 RUN rm -rf /usr/share/nginx/html/*
 
