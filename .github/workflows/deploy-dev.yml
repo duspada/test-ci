@@ -11,7 +11,7 @@ env:
   GKE_CLUSTER: k8s-bentivi-dev            # TODO: update to cluster name
   GKE_ZONE: us-east1-b                    # TODO: update to cluster zone
   DEPLOYMENT_NAME: k8s-bentivi-dev        # TODO: update to deployment name
-  IMAGE: bentivi
+  IMAGE: backoffice-develop
 
 jobs:
   setup-build-publish-deploy:
